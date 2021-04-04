@@ -1,0 +1,34 @@
+
+
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <form role="form" class="centerContent formMargin" action="{{ url_for('search') }}" method="post">
+        <fieldset>
+            <legend>Search</legend>
+            <div class="form-group">
+                <label for="title">Book title:</label>
+                <input autocomplete="on" autofocus class="form-control" placeholder="Enter the title of the book" id="title"
+                       name="title" type="text"/>
+            </div>
+            <div class="form-group">
+                <label for="author">Book author (optional):</label>
+                <input autocomplete="on" class="form-control" placeholder="Enter the author of the book" id="author" name="author"
+                       type="text"/>
+            </div>
+            <div class="form-group">
+                <label for="author">Select your Library to add Books:</label>
+                <select multiple="multiple" name="libraryid" >
+                    {% for l in library_list %}
+                        <option value="{{l.library_id }}">{{ l.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+        </fieldset>
+        <br><button class="btn btn-lg btn-info centerContent" type="submit">Search</button>
+    </form>
+{% endblock %}

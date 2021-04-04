@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no"
+    />
+    <title>Books - Find books from Google Play Books</title>
+
+    <!-- Scripts -->
+    <link rel="stylesheet" href="index.css" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("sw.js")
+            .then(function (registration) {
+              console.log(
+                "ServiceWorker registration successful with scope: ",
+                registration.scope
+              );
+            })
+            .catch(function (err) {
+              console.log("ServiceWorker registration failed: ", err);
+            });
+        });
+      }
+    </script>
+  </head>
+
+  <body>
+
+    <main id="main" class="main">
+      <article>
+        <section id="search" class="results">
+          <div class="flex">
+            <input
+              id="search-box"
+              class="search-box"
+              placeholder="Search books by name, author, genre and etc ..."
+              aria-label="Search books"
+            />
+            <button
+              id="installPWA"
+              class="info"
+              onclick="installPWA()"
+              style="margin-left: 24px; padding: 8px 16px;"
+            >
+              <img src="icons/pwalogo.svg" alt="PWA" style="height: 16px;" />
+            </button>
+          </div>
+          <div class="list-book search">
+            <div class="prompt">Enter a search term</div>
+          </div>
+        </section>
+
+          </div>
+        </footer>
+      </article>
+
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>

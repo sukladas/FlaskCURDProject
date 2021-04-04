@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} </title>
+</head>
+<body>
+
+                {% with messages = get_flashed_messages() %}
+
+                {% if messages %}
+
+                {% for message in messages %}
+
+                <div class="alert alert-success alert-dismissable" role="alert">
+
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+
+                        <span aria-hidden="true">x</span>
+
+                    </button>
+
+
+                {{message}}
+
+
+                </div>
+
+
+                {% endfor %}
+
+                {% endif %}
+                {% endwith %}
+
+    <div class="bg-nav text-light d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+
+    <!-- <h5 class="my-0 mr-md-auto font-weight-normal"> ebook Store</h5>-->
+    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto ">
+      <a class="me-3 py-2 text-light text-decoration-none" href="#">Home</a>
+      <a class="me-3 py-2 text-light text-decoration-none" href="#">Profile</a>
+      <a class="me-3 py-2 text-light text-decoration-none" href="#">Support</a>
+
+    </nav>
+    <a class="btn-outline-primary" href="/logout">LogOut </a>
+
+   </div>
+
+   <div class="container">
+     <div class="row">
+        <div class="col-md-4">
+           <div class="card">
+             <div class="card-body">
+               <h2> My Books </h2>
+             </div>
+          </div>
+         </div>
+       </div>
+     </div>
+
+
+<div class="container">
+
+
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Book ID</th>
+                        <th>Googlebooks API ID</th>
+                        <th>Author</th>
+                        <th>Title</th>
+                        <th>Action</th>
+                    </tr>
+                   {% for row in books %}
+                    <tr>
+                        <td>{{row.book_id}}</td>
+                        <td>{{row.Googlebooksapiid}}</td>
+                        <td>{{row.author}}</td>
+                        <td>{{row.title}}</td>
+                        <td>
+                            <a href="{{ url_for('delete_book', book_id = row.book_id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+                        </td>
+                    </tr>
+{% endfor %}
+
+
+
+
+    </table>
+   </div>
+
+
+
+ </div>
+ </div>
+</div>
+
+{% block body %} {% endblock %}
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>

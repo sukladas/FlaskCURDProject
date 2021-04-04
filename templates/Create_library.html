@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href=" https://fonts.googleapis.com/css?family=Lora">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/css/styles.min.css">
+
+</head>
+<body>
+
+    <h2>
+   <p style="text-align:center"> Create Library </p>
+   </h2>
+
+    <div class="row">
+      <div class="col-sm-4">
+
+
+
+      </div>
+      <div class="col-sm-4">
+          <h4>Enter name and description of your new library </h4>
+            <p>The form below will store the details in your AWS RDS MySQL Workbench</p>
+            <form action="/inserts" method="POST">
+              <div class="form-group">
+                <label for="usr">library name:</label>
+                <input name="libraryname" type="text" class="form-control" id="usr">
+              </div>
+
+<br>
+<br>
+              <div class="form-group">
+                <label for="atr">Description:</label>
+                <input name="Description" type="text" class="form-control" id="atr">
+              </div>
+
+<br>
+
+<br>
+
+              <br>
+              <input type="submit" name="submit" value="create library" class="btn btn-success">
+            </form>
+      </div>
+    </div>
+    <hr>
+
+    <h4> The Books are :</h4>
+
+    {{var}}
+
+
+    <br>
+    <br>
+    <hr>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+

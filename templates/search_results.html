@@ -1,0 +1,69 @@
+
+
+
+{% block title %}
+    Search results
+{% endblock %}
+
+{% block main %}
+    {% for book in books["items"] %}
+    <form action="/search_results" method="POST">
+        <div id="book" class="card text-white bg-warning mb-3">
+            <div class="card-header text">
+                <a title="See book details" class="text">
+                </a>
+            </div>
+            <div class="card-body">
+                {% if book.volumeInfo.imageLinks %}
+                    <img id="bookImage" src="{{ book.volumeInfo.imageLinks.smallThumbnail }}"
+                         title="{{ book.volumeInfo.title }}" alt="{{ book.volumeInfo.title }}"/>
+                {% else %}
+                    <img width="55%" height="65%" src="../static/default-book-cover.jpg"
+                         title="{{ book.volumeInfo.title }}" alt="{{ book.volumeInfo.title }}"/>
+                {% endif %}
+                <h4 class="card-title"></h4>
+                <p class="card-text">
+                    {% if book.volumeInfo.authors %}
+                        {% for author in book.volumeInfo.authors[:3] %}
+                            <span id="author" class="badge badge-primary text">{{ author[:24] }}&nbsp;</span>
+                            <input type=hidden  value= "{{ author[:30] }}" class="field left" name ="authorval" readonly>
+
+                        {% endfor %}
+
+                    {% endif %}
+                </p>
+                <p class="card-text">
+                    {% if book.volumeInfo.title %}
+                        {% for title in book.volumeInfo.title[:100] %}
+                            <span id="title" class="badge badge-primary text">{{ title[:100] }}&nbsp;</span>
+
+                        {% endfor %}
+
+
+                            <input type=hidden  value= "{{ book.volumeInfo.title[:40] }}" class="field left" name ="titleval" readonly>
+
+                    {% endif %}
+                </p>
+                <div id="bookId" style="display: none;">
+                    {% for title in book.id[:100] %}
+                        <input type=hidden  value= "{{ book.id[:100] }}" class="field left" name ="bookid" readonly>
+                    {% endfor %}
+                    <input type=hidden  value= "{{ libraryid }}"  class="field left" name ="libraryid" readonly>
+                </div>
+                <div>
+                    {% for title in book.volumeInfo.title[:40] %}
+
+                            <input type=hidden  value= "{{ title[:40] }}" class="field left" name ="titleval" readonly>
+                    {% endfor %}
+                </div>
+
+
+                </div>
+                <p>
+                    <input type="submit" name="submit" value="add book" class="btn btn-success">
+                </p>
+            </div>
+        </div>
+    </form>
+    {% endfor %}
+{% endblock %}
